@@ -32,5 +32,8 @@ public class CustomerService implements ICustomerService{
     public void remove(Long id) {
         iCustomerRepository.deleteById(id);
     }
-
+    @Override
+    public List<Customer> findByFirstNameContaining(String firstName) {
+        return iCustomerRepository.findByFirstNameContaining(firstName);
+    }
 }

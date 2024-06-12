@@ -78,5 +78,11 @@ public class CustomerController {
         customerService.remove(customer.getId());
         return "redirect:/customers";
     }
-
+    @GetMapping("/search")
+    public ModelAndView searchCustomer(@RequestParam("firstName") String firstName) {
+        List<Customer> customers = customerService.findByFirstNameContaining(firstName);
+        ModelAndView modelAndView = new ModelAndView("/customer/list");
+        modelAndView.addObject("customers", customers);
+        return modelAndView;
+    }
 }

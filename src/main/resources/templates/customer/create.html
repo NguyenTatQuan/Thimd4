@@ -15,23 +15,23 @@
 <form th:action="@{/customers/create}" th:object="${customer}" method="post">
     <table>
         <tr>
-            <td>First name:</td>
-            <td><input type="text" th:field="*{name}"/></td>
+            <td>name:</td>
+            <td><input type="text" th:field="*{firstName}"/></td>
         </tr>
         <tr>
-            <td>Last name:</td>
+            <td>typeofservice:</td>
             <td><input type="text" th:field="*{typeofservice}"/></td>
         </tr>
         <tr>
-            <td>First name:</td>
+            <td>daytrading:</td>
             <td><input type="text" th:field="*{daytrading}"/></td>
         </tr>
         <tr>
-            <td>First name:</td>
+            <td>price:</td>
             <td><input type="text" th:field="*{price}"/></td>
         </tr>
         <tr>
-            <td>First name:</td>
+            <td>acreage:</td>
             <td><input type="text" th:field="*{acreage}"/></td>
         </tr>
         <tr>

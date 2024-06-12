@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
-
+    List<Customer> findByFirstNameContaining(String firstName);
 }
