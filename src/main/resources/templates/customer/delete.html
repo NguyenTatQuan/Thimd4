@@ -1,43 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Delete Customer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h1>Delete customer</h1>
-<h2>Are you sure?</h2>
-<p>
-    <a href="/customers">Customer list</a>
-</p>
-<form th:action="@{/customers/delete}" th:object="${customer}" method="post">
-    <input th:type="hidden" name="id" th:field="*{id}">
-    <table>
-        <tr>
-            <td>name:</td>
-            <td th:text="${customer.firstName}"></td>
-        </tr>
-        <tr>
-            <td>typeofservice:</td>
-            <td th:text="${customer.typeofservice}"></td>
-        </tr>
-        <tr>
-        <td>daytrading</td>
-        <td th:text="${customer.daytrading}"></td>
-    </tr>
-        <tr>
-            <td>price</td>
-            <td th:text="${customer.price}"></td>
-        </tr>
-        <tr>
-            <td>acreage</td>
-            <td th:text="${customer.acreage}"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Delete customer"></td>
-        </tr>
-    </table>
-</form>
+<div class="container">
+    <h1>Delete Customer</h1>
+    <h2>Are you sure?</h2>
+    <a class="btn btn-primary mb-3" href="/customers">Customer List</a>
+    <form th:action="@{/customers/delete}" th:object="${customer}" method="post">
+        <input type="hidden" name="id" th:value="${customer.id}">
+        <table class="table table-bordered">
+            <tr>
+                <th>Name:</th>
+                <td th:text="${customer.firstName}"></td>
+            </tr>
+            <tr>
+                <th>Type of Service:</th>
+                <td th:text="${customer.typeofservice}"></td>
+            </tr>
+            <tr>
+                <th>Day Trading:</th>
+                <td th:text="${customer.daytrading}"></td>
+            </tr>
+            <tr>
+                <th>Price:</th>
+                <td th:text="${customer.price}"></td>
+            </tr>
+            <tr>
+                <th>Acreage:</th>
+                <td th:text="${customer.acreage}"></td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-danger">Delete Customer</button>
+    </form>
+</div>
 </body>
 </html>
