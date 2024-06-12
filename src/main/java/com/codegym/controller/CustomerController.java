@@ -85,4 +85,15 @@ public class CustomerController {
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }
+    @GetMapping("/view/{id}")
+    public ModelAndView viewCustomer(@PathVariable Long id) {
+        Optional<Customer> customer = customerService.findById(id);
+        if (customer.isPresent()) {
+            ModelAndView modelAndView = new ModelAndView("/customer/view");
+            modelAndView.addObject("customer", customer.get());
+            return modelAndView;
+        } else {
+            return new ModelAndView("/error_404");
+        }
+    }
 }
