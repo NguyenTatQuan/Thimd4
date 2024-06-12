@@ -35,22 +35,30 @@ public class CustomerController {
         return modelAndView;
     }
 
+//    @PostMapping("/create")
+//    public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer, BindingResult bindingResult) {
+//        customerValidator.validate(customer, bindingResult);
+//        if (bindingResult.hasErrors()) {
+//            ModelAndView modelAndView = new ModelAndView("/customer/create");
+//            modelAndView.addObject("customer", customer);
+//            modelAndView.addObject("errors", bindingResult.getAllErrors());
+//            return modelAndView;
+//        }
+//        customerService.save(customer);
+//        ModelAndView modelAndView = new ModelAndView("/customer/create");
+//        modelAndView.addObject("customer", new Customer());
+//        modelAndView.addObject("message", "New customer created successfully");
+//        return modelAndView;
+//    }
+
     @PostMapping("/create")
-    public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer, BindingResult bindingResult) {
-        customerValidator.validate(customer, bindingResult);
-        if (bindingResult.hasErrors()) {
-            ModelAndView modelAndView = new ModelAndView("/customer/create");
-            modelAndView.addObject("customer", customer);
-            modelAndView.addObject("errors", bindingResult.getAllErrors());
-            return modelAndView;
-        }
+    public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer) {
         customerService.save(customer);
         ModelAndView modelAndView = new ModelAndView("/customer/create");
         modelAndView.addObject("customer", new Customer());
         modelAndView.addObject("message", "New customer created successfully");
         return modelAndView;
     }
-
     @GetMapping("/delete/{id}")
     public ModelAndView showDeleteForm(@PathVariable Long id) {
         Optional<Customer> customer = customerService.findById(id);
